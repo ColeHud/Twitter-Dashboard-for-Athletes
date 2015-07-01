@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>20069362-079C-4BB6-A7F5-88242708BBA7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2F5025A4D07908C28C75664D37D9913EE63D3CC9</key>
+		<string>https://github.com/ColeHud/Twitter-Dashboard-for-Athletes.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Twitter Dashboard for Athletes.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2F5025A4D07908C28C75664D37D9913EE63D3CC9</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ColeHud/Twitter-Dashboard-for-Athletes.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2F5025A4D07908C28C75664D37D9913EE63D3CC9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2F5025A4D07908C28C75664D37D9913EE63D3CC9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Twitter%20Dashboard%20for%20Athletes</string>
+		</dict>
+	</array>
+</dict>
+</plist>
