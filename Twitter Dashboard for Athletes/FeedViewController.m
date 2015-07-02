@@ -9,6 +9,7 @@
 #import "FeedViewController.h"
 
 @interface FeedViewController ()
+@property (strong, nonatomic) IBOutlet UITabBarItem *barButton;
 
 @end
 
@@ -16,6 +17,14 @@
 
 - (void)viewDidLoad
 {
+    //deal with edge weirdness
+    [self.navigationController.view setBackgroundColor:[UIColor whiteColor]];
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        [self.navigationController.view setBackgroundColor:[UIColor whiteColor]];
+    }
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -26,7 +35,7 @@
     username = [query getFirstObject][@"name"];
     
     //construct the search query string
-    NSString *searchTerm = [NSString stringWithFormat:@"to:%@ :)", username];
+    NSString *searchTerm = [NSString stringWithFormat:@"to:%@", username];
     NSLog(@"%@", username);
     
     [[Twitter sharedInstance] logInGuestWithCompletion:^(TWTRGuestSession *guestSession, NSError *error) {
@@ -39,6 +48,9 @@
             NSLog(@"error: %@", [error localizedDescription]);
         }
     }];
+    
+    //weirdness
+    [self.navigationController.view setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning
