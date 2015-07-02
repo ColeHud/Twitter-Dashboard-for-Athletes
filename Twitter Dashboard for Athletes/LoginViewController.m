@@ -25,6 +25,11 @@
         // play with Twitter session
         NSLog(@"Name: %@", session.userName);
         
+        //pin the username
+        PFObject *userName = [PFObject objectWithClassName:@"UserName"];
+        userName[@"name"] = session.userName;
+        [userName pinInBackground];
+        
         //segue to the main app
         [self performSegueWithIdentifier:@"login" sender:self];
     }];

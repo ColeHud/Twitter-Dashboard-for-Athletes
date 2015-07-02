@@ -9,6 +9,7 @@
 #import <TwitterKit/TwitterKit.h>
 #import <UIKit/UIKit.h>
 #import <Fabric/Fabric.h>
+#import <Parse/Parse.h>
 
 @interface FeedViewController : TWTRTimelineViewController
 
