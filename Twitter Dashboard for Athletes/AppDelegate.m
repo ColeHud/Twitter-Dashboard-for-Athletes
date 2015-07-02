@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <Fabric/Fabric.h>
-#import <TwitterKit/TwitterKit.h>
 
 @interface AppDelegate ()
 
@@ -19,7 +17,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //fabric
     [Fabric with:@[TwitterKit]];
+    
+    //parse local datastore
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"UCo8g81v8B6XvGpwYV0sNBuPVX5u740nPDphMR4U"
+                  clientKey:@"sdshQEd0q97lIcp715mrKjnZlLGAVHjnC36ZtzYi"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     // Override point for customization after application launch.
     return YES;
 }
