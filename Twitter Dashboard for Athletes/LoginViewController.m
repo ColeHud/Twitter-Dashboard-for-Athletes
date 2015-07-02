@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view.
     
     //login button
-    TWTRLogInButton *logInButton = [TWTRLogInButton buttonWithLogInCompletion:^(TWTRSession *session, NSError *error) {
+    TWTRLogInButton *loginButton = [TWTRLogInButton buttonWithLogInCompletion:^(TWTRSession *session, NSError *error) {
         // play with Twitter session
         NSLog(@"Name: %@", session.userName);
         
@@ -30,8 +30,8 @@
     }];
     
     //place the button
-    logInButton.center = self.view.center;
-    [self.view addSubview:logInButton];
+    loginButton.center = self.view.center;
+    [self.view addSubview:loginButton];
 }
 
 - (void)didReceiveMemoryWarning

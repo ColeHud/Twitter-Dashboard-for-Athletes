@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.87450980392156863" green="0.2627450980392157" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <segue destination="wl3-Uc-yfi" kind="show" identifier="login" id="lxg-s8-lea"/>
+                        <segue destination="wl3-Uc-yfi" kind="presentation" identifier="login" modalTransitionStyle="crossDissolve" id="lxg-s8-lea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ff2-Jk-IKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -60,7 +60,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="gjl-Pq-Mu4"/>
+                    <tabBarItem key="tabBarItem" title="Item 3" id="gjl-Pq-Mu4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6A6-Lo-T2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,7 +80,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Ljg-aR-CeA"/>
+                    <tabBarItem key="tabBarItem" title="Item 4" id="Ljg-aR-CeA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVO-bu-AYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
