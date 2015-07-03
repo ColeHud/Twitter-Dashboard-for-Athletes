@@ -27,7 +27,6 @@
 		EDF072871B44902800ABD72C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF072861B44902800ABD72C /* MobileCoreServices.framework */; };
 		EDF072891B44903100ABD72C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF072881B44903100ABD72C /* QuartzCore.framework */; };
 		EDF0728B1B44903800ABD72C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF0728A1B44903800ABD72C /* Security.framework */; };
-		EDF0728D1B44904200ABD72C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF0728C1B44904200ABD72C /* StoreKit.framework */; };
 		EDF0728F1B44904A00ABD72C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF0728E1B44904A00ABD72C /* SystemConfiguration.framework */; };
 		EDF072911B44905300ABD72C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF072901B44905300ABD72C /* libz.dylib */; };
 		EDF072931B44905A00ABD72C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF072921B44905A00ABD72C /* libsqlite3.dylib */; };
@@ -78,7 +77,6 @@
 		EDF072861B44902800ABD72C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EDF072881B44903100ABD72C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EDF0728A1B44903800ABD72C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		EDF0728C1B44904200ABD72C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EDF0728E1B44904A00ABD72C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EDF072901B44905300ABD72C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EDF072921B44905A00ABD72C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -103,7 +101,6 @@
 				EDF072931B44905A00ABD72C /* libsqlite3.dylib in Frameworks */,
 				EDF072911B44905300ABD72C /* libz.dylib in Frameworks */,
 				EDF0728F1B44904A00ABD72C /* SystemConfiguration.framework in Frameworks */,
-				EDF0728D1B44904200ABD72C /* StoreKit.framework in Frameworks */,
 				EDF0728B1B44903800ABD72C /* Security.framework in Frameworks */,
 				EDF0729C1B4490F200ABD72C /* TwitterCore.framework in Frameworks */,
 				EDF0729A1B4490F200ABD72C /* TwitterKit.framework in Frameworks */,
@@ -211,7 +208,6 @@
 				EDF072921B44905A00ABD72C /* libsqlite3.dylib */,
 				EDF072901B44905300ABD72C /* libz.dylib */,
 				EDF0728E1B44904A00ABD72C /* SystemConfiguration.framework */,
-				EDF0728C1B44904200ABD72C /* StoreKit.framework */,
 				EDF0728A1B44903800ABD72C /* Security.framework */,
 				EDF072881B44903100ABD72C /* QuartzCore.framework */,
 				EDF072861B44902800ABD72C /* MobileCoreServices.framework */,
@@ -279,6 +275,12 @@
 				TargetAttributes = {
 					EDF0723B1B448C8E00ABD72C = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = NTEK7EDABY;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					EDF072541B448C8E00ABD72C = {
 						CreatedOnToolsVersion = 6.4;
@@ -480,6 +482,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Twitter",
@@ -489,8 +493,10 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Twitter Dashboard for Athletes/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -498,6 +504,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Twitter",
@@ -507,8 +515,10 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Twitter Dashboard for Athletes/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
