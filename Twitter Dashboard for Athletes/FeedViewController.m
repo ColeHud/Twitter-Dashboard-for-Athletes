@@ -49,14 +49,31 @@
         }
     }];
     
-    //weirdness
-    [self.navigationController.view setBackgroundColor:[UIColor whiteColor]];
+    self.tableView.backgroundColor = [UIColor colorWithRed:85.0/255.0 green:172.0/255.0 blue:238.0/255.0 alpha:1.0];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//compose a tweet
+- (IBAction)composeTweet:(UIBarButtonItem *)sender
+{
+    TWTRComposer *composer = [[TWTRComposer alloc] init];
+    
+    [composer setText:@""];
+    
+    // Called from a UIViewController
+    [composer showFromViewController:self completion:^(TWTRComposerResult result) {
+        if (result == TWTRComposerResultCancelled) {
+            NSLog(@"Tweet composition cancelled");
+        }
+        else {
+            NSLog(@"Sending Tweet!");
+        }
+    }];
 }
 
 /*

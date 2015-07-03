@@ -36,6 +36,7 @@
 		EDF0729B1B4490F200ABD72C /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EDF072971B4490F200ABD72C /* TwitterKitResources.bundle */; };
 		EDF0729C1B4490F200ABD72C /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF072981B4490F200ABD72C /* TwitterCore.framework */; };
 		EDF0729F1B44CD4300ABD72C /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF0729E1B44CD4300ABD72C /* FeedViewController.m */; };
+		EDF072A81B45FFE200ABD72C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF072A71B45FFE200ABD72C /* TabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		EDF072981B4490F200ABD72C /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		EDF0729D1B44CD4300ABD72C /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		EDF0729E1B44CD4300ABD72C /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		EDF072A61B45FFE200ABD72C /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		EDF072A71B45FFE200ABD72C /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,8 @@
 		EDF0723E1B448C8E00ABD72C /* Twitter Dashboard for Athletes */ = {
 			isa = PBXGroup;
 			children = (
+				EDF072A61B45FFE200ABD72C /* TabBarViewController.h */,
+				EDF072A71B45FFE200ABD72C /* TabBarViewController.m */,
 				EDF0729D1B44CD4300ABD72C /* FeedViewController.h */,
 				EDF0729E1B44CD4300ABD72C /* FeedViewController.m */,
 				EDF072681B448E3000ABD72C /* LoginViewController.h */,
@@ -333,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDF072A81B45FFE200ABD72C /* TabBarViewController.m in Sources */,
 				EDF072451B448C8E00ABD72C /* AppDelegate.m in Sources */,
 				EDF072421B448C8E00ABD72C /* main.m in Sources */,
 				EDF0729F1B44CD4300ABD72C /* FeedViewController.m in Sources */,
