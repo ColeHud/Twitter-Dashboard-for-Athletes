@@ -57,6 +57,8 @@
     UIColor *twitterBlue = [UIColor colorWithRed:85.0/255.0 green:172.0/255.0 blue:238.0/255.0 alpha:1.0];
     self.tableView.backgroundColor = twitterBlue;
     self.tableView.separatorColor = twitterBlue;
+    
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
 }
 
 - (void)didReceiveMemoryWarning
