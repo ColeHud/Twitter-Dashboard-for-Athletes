@@ -17,8 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //fabric
-    [Fabric with:@[TwitterKit]];
+    //fabric and crashylitics
+    [Fabric with:@[TwitterKit, CrashlyticsKit]];
     
     //parse local datastore
     [Parse enableLocalDatastore];

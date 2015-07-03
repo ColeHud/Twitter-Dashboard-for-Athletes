@@ -38,18 +38,25 @@
     NSString *searchTerm = [NSString stringWithFormat:@"to:%@", username];
     NSLog(@"%@", username);
     
+    //load twitter timeline
     [[Twitter sharedInstance] logInGuestWithCompletion:^(TWTRGuestSession *guestSession, NSError *error) {
-        if (guestSession) {
+        if (guestSession)
+        {
             TWTRAPIClient *APIClient = [[Twitter sharedInstance] APIClient];
             TWTRSearchTimelineDataSource *searchTimelineDataSource = [[TWTRSearchTimelineDataSource alloc] initWithSearchQuery:searchTerm APIClient:APIClient];
             
             self.dataSource = searchTimelineDataSource;
-        } else {
+        }
+        else
+        {
             NSLog(@"error: %@", [error localizedDescription]);
         }
     }];
     
-    self.tableView.backgroundColor = [UIColor colorWithRed:85.0/255.0 green:172.0/255.0 blue:238.0/255.0 alpha:1.0];
+    //background
+    UIColor *twitterBlue = [UIColor colorWithRed:85.0/255.0 green:172.0/255.0 blue:238.0/255.0 alpha:1.0];
+    self.tableView.backgroundColor = twitterBlue;
+    self.tableView.separatorColor = twitterBlue;
 }
 
 - (void)didReceiveMemoryWarning

@@ -37,6 +37,7 @@
 		EDF0729C1B4490F200ABD72C /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF072981B4490F200ABD72C /* TwitterCore.framework */; };
 		EDF0729F1B44CD4300ABD72C /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF0729E1B44CD4300ABD72C /* FeedViewController.m */; };
 		EDF072A81B45FFE200ABD72C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF072A71B45FFE200ABD72C /* TabBarViewController.m */; };
+		EDF072AA1B462DE700ABD72C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF072A91B462DE700ABD72C /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		EDF0729E1B44CD4300ABD72C /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		EDF072A61B45FFE200ABD72C /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		EDF072A71B45FFE200ABD72C /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		EDF072A91B462DE700ABD72C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				EDF072851B44902000ABD72C /* CoreLocation.framework in Frameworks */,
 				EDF072831B44901800ABD72C /* CoreGraphics.framework in Frameworks */,
 				EDF072811B44901100ABD72C /* CFNetwork.framework in Frameworks */,
+				EDF072AA1B462DE700ABD72C /* Crashlytics.framework in Frameworks */,
 				EDF0727F1B44900800ABD72C /* AudioToolbox.framework in Frameworks */,
 				EDF072781B448E8700ABD72C /* Bolts.framework in Frameworks */,
 				EDF072791B448E8700ABD72C /* Parse.framework in Frameworks */,
@@ -195,6 +198,7 @@
 		EDF072771B448E6D00ABD72C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDF072A91B462DE700ABD72C /* Crashlytics.framework */,
 				EDF072951B4490F200ABD72C /* Fabric.framework */,
 				EDF072961B4490F200ABD72C /* TwitterKit.framework */,
 				EDF072971B4490F200ABD72C /* TwitterKitResources.bundle */,
