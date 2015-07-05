@@ -10,6 +10,7 @@
 
 @interface FeedViewController ()
 @property (strong, nonatomic) IBOutlet UITabBarItem *barButton;
+@property (strong, nonatomic) NSString *username;
 
 @end
 
@@ -31,12 +32,12 @@
     //get the user name
     PFQuery *query = [PFQuery queryWithClassName:@"UserName"];
     [query fromLocalDatastore];
-    NSString *username = NULL;
-    username = [query getFirstObject][@"name"];
+    self.username = NULL;
+    self.username = [query getFirstObject][@"name"];
     
     //construct the search query string
-    NSString *searchTerm = [NSString stringWithFormat:@"to:%@", username];
-    NSLog(@"%@", username);
+    NSString *searchTerm = [NSString stringWithFormat:@"to:%@", self.username];
+    NSLog(@"%@", self.username);
     
     //load twitter timeline
     [[Twitter sharedInstance] logInGuestWithCompletion:^(TWTRGuestSession *guestSession, NSError *error) {
@@ -79,8 +80,37 @@
         if (result == TWTRComposerResultCancelled) {
             NSLog(@"Tweet composition cancelled");
         }
-        else {
+        else
+        {
             NSLog(@"Sending Tweet!");
+            
+            //this is where we add another tweet sent
+            PFQuery *query = [PFQuery queryWithClassName:@"UserTweetCount"];
+            [query whereKey:@"name" equalTo:self.username];
+            
+            //query
+            PFObject *tweetCount = [query getFirstObject];
+            
+            //if there is an object for that player
+            if(tweetCount != nil)
+            {
+                //get previous count and add one
+                int newCount = [[tweetCount objectForKey:@"count"] intValue] + 1;
+                NSLog(@"User tweets: %d", newCount);
+                [tweetCount setObject:[NSNumber numberWithInt:newCount] forKey:@"count"];
+                
+                //save
+                [tweetCount saveInBackground];
+            }
+            else
+            {
+                //create first count
+                PFObject *tweetCount = [PFObject objectWithClassName:@"UserTweetCount"];
+                [tweetCount setObject:[NSNumber numberWithInt:1] forKey:@"count"];
+                [tweetCount saveInBackground];
+                NSLog(@"Created new user count object");
+            }
+            
         }
     }];
 }

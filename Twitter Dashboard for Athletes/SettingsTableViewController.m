@@ -9,6 +9,17 @@
 #import "SettingsTableViewController.h"
 
 @interface SettingsTableViewController ()
+//feed
+@property (strong, nonatomic) IBOutlet UISwitch *sentimentAnalysisSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *positiveTweetsSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *negativeTweetsSwitch;
+
+//rank
+@property (strong, nonatomic) IBOutlet UISwitch *rankMeSwitch;
+
+//events
+@property (strong, nonatomic) IBOutlet UISwitch *eventTweetRemindersSwitch;
+
 
 @end
 
@@ -33,6 +44,21 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//update back-end settings
+-(void)updateSettings
+{
+    //boolean values
+    BOOL sentimentAnalysis = self.sentimentAnalysisSwitch.isEnabled;
+    BOOL positiveTweets = self.positiveTweetsSwitch.isEnabled;
+    BOOL negativeTweets = self.negativeTweetsSwitch.isEnabled;
+    BOOL rankMe = self.rankMeSwitch.isEnabled;
+    BOOL eventTweetReminders = self.eventTweetRemindersSwitch.isEnabled;
+    
+    //Calendar search terms
+    
+    //notification frequency
 }
 
 //DATA
