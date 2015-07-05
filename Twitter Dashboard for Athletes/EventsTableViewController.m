@@ -10,12 +10,16 @@
 
 @interface EventsTableViewController ()
 
+-(void)updateEvents;
+@property (strong, nonatomic) NSMutableArray *events;
+
 @end
 
 @implementation EventsTableViewController
 
 - (void)viewDidLoad
 {
+    [self updateEvents];
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -37,30 +41,111 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    
+    //update the events and then set the number of rows to events.count
+    [self updateEvents];
+    NSLog(@"%d", self.events.count);
+    return self.events.count;
 }
 
 - (IBAction)update:(UIBarButtonItem *)sender
 {
+    //update events
     NSLog(@"Update events");
+    [self updateEvents];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+//update events
+-(void)updateEvents
+{
+    //calendar stuff
+    EKEventStore *store = [[EKEventStore alloc] init];
     
-    // Configure the cell...
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        // handle access here
+        if(error)
+        {
+            //allert the user that they have to allow access
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Access To Events"
+                                                            message:@"Please give access in the settings app"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        else
+        {
+            NSLog(@"Access to calendars granted");
+            //if the user chose to allow access
+            // Get the appropriate calendar
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            
+            // Create the start date components
+            NSDateComponents *oneDayAgoComponents = [[NSDateComponents alloc] init];
+            oneDayAgoComponents.day = 0;
+            NSDate *oneDayAgo = [calendar dateByAddingComponents:oneDayAgoComponents
+                                                          toDate:[NSDate date]
+                                                         options:0];
+            
+            // Create the end date components
+            NSDateComponents *oneYearFromNowComponents = [[NSDateComponents alloc] init];
+            oneYearFromNowComponents.year = 1;
+            NSDate *oneYearFromNow = [calendar dateByAddingComponents:oneYearFromNowComponents
+                                                               toDate:[NSDate date]
+                                                              options:0];
+            
+            // Create the predicate from the event store's instance method
+            NSPredicate *predicate = [store predicateForEventsWithStartDate:oneDayAgo
+                                                                    endDate:oneYearFromNow
+                                                                  calendars:nil];
+            
+            // Fetch all events that match the predicate
+            NSArray *events = [store eventsMatchingPredicate:predicate];
+            
+            //loop over events
+            NSMutableArray *calendarItems = [[NSMutableArray alloc] init];
+            for(EKCalendarItem *eventItem in events)
+            {
+                NSString *title = eventItem.title;
+                NSString *description = eventItem.description;
+                NSString *combined = [NSString stringWithFormat:@"%@ %@", title, description];
+                
+                //if the event contains sports words add the event to the array
+                [calendarItems addObject:eventItem];
+                /*
+                if([combined containsString:@"game"] || [combined containsString:@"tournament"] || [combined containsString:@"match"] || [combined containsString:@"sport"])
+                {
+                    [calendarItems addObject:eventItem];
+                }
+                 */
+            }
+            
+            self.events = calendarItems;
+            [self.tableView reloadData];
+        }
+    }];
+    
+    
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"prototype" forIndexPath:indexPath];
+    
+    EKCalendarItem *item = [self.events objectAtIndex:indexPath.row];
+    NSString *title = item.title;
+    cell.textLabel.text = title;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
