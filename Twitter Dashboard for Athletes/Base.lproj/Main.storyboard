@@ -389,7 +389,14 @@
                             <outlet property="delegate" destination="Nev-gj-cHC" id="U7q-TY-tzH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Events" id="RIR-xl-Avf"/>
+                    <navigationItem key="navigationItem" title="Events" id="RIR-xl-Avf">
+                        <barButtonItem key="rightBarButtonItem" title="Update" style="plain" id="OFM-Yb-XWl">
+                            <color key="tintColor" red="0.91764705879999997" green="0.82352941180000006" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="update:" destination="Nev-gj-cHC" id="Bz4-nN-1fr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyv-Pf-lNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
