@@ -107,6 +107,7 @@
                 //create first count
                 PFObject *tweetCount = [PFObject objectWithClassName:@"UserTweetCount"];
                 [tweetCount setObject:[NSNumber numberWithInt:1] forKey:@"count"];
+                tweetCount[@"name"] = self.username;
                 [tweetCount saveInBackground];
                 NSLog(@"Created new user count object");
             }

@@ -39,6 +39,7 @@
 		EDF072AA1B462DE700ABD72C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF072A91B462DE700ABD72C /* Crashlytics.framework */; };
 		EDF072B31B47235300ABD72C /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF072B21B47235300ABD72C /* SettingsTableViewController.m */; };
 		EDF072B61B47817400ABD72C /* NotificationFrequencyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF072B51B47817400ABD72C /* NotificationFrequencyDetailViewController.m */; };
+		EDF072B91B49BACF00ABD72C /* EventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF072B81B49BACF00ABD72C /* EventsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		EDF072B21B47235300ABD72C /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		EDF072B41B47817400ABD72C /* NotificationFrequencyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationFrequencyDetailViewController.h; sourceTree = "<group>"; };
 		EDF072B51B47817400ABD72C /* NotificationFrequencyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationFrequencyDetailViewController.m; sourceTree = "<group>"; };
+		EDF072B71B49BACF00ABD72C /* EventsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsTableViewController.h; sourceTree = "<group>"; };
+		EDF072B81B49BACF00ABD72C /* EventsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 		EDF0723E1B448C8E00ABD72C /* Twitter Dashboard for Athletes */ = {
 			isa = PBXGroup;
 			children = (
+				EDF072B71B49BACF00ABD72C /* EventsTableViewController.h */,
+				EDF072B81B49BACF00ABD72C /* EventsTableViewController.m */,
 				EDF072B41B47817400ABD72C /* NotificationFrequencyDetailViewController.h */,
 				EDF072B51B47817400ABD72C /* NotificationFrequencyDetailViewController.m */,
 				EDF072B11B47235300ABD72C /* SettingsTableViewController.h */,
@@ -356,6 +361,7 @@
 			files = (
 				EDF072B31B47235300ABD72C /* SettingsTableViewController.m in Sources */,
 				EDF072A81B45FFE200ABD72C /* TabBarViewController.m in Sources */,
+				EDF072B91B49BACF00ABD72C /* EventsTableViewController.m in Sources */,
 				EDF072451B448C8E00ABD72C /* AppDelegate.m in Sources */,
 				EDF072421B448C8E00ABD72C /* main.m in Sources */,
 				EDF072B61B47817400ABD72C /* NotificationFrequencyDetailViewController.m in Sources */,
