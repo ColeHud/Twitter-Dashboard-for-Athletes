@@ -78,11 +78,11 @@
 -(void)updateSettings
 {
     //boolean values
-    BOOL sentimentAnalysis = self.sentimentAnalysisSwitch.isEnabled;
-    BOOL positiveTweets = self.positiveTweetsSwitch.isEnabled;
-    BOOL negativeTweets = self.negativeTweetsSwitch.isEnabled;
+    BOOL sentimentAnalysis = self.sentimentAnalysisSwitch.isOn;
+    BOOL positiveTweets = self.positiveTweetsSwitch.isOn;
+    BOOL negativeTweets = self.negativeTweetsSwitch.isOn;
     BOOL rankMe = self.rankMeSwitch.isOn;
-    BOOL eventTweetReminders = self.eventTweetRemindersSwitch.isEnabled;
+    BOOL eventTweetReminders = self.eventTweetRemindersSwitch.isOn;
     
     //Calendar search terms
     

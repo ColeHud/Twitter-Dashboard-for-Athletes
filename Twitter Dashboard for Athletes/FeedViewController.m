@@ -37,7 +37,7 @@
     
     //construct the search query string
     NSString *searchTerm = [NSString stringWithFormat:@"to:%@", self.username];
-    NSLog(@"%@", self.username);
+    NSLog(@"search term: %@", searchTerm);
     
     //load twitter timeline
     [[Twitter sharedInstance] logInGuestWithCompletion:^(TWTRGuestSession *guestSession, NSError *error) {
