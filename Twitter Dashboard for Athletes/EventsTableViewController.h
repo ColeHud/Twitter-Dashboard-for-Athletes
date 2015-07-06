@@ -12,6 +12,8 @@
 #import <Parse/Parse.h>
 #import <Bolts/Bolts.h>
 #import <ParseUI/ParseUI.h>
+#import <TwitterKit/TwitterKit.h>
+#import <Fabric/Fabric.h>
 
 @interface EventsTableViewController : PFQueryTableViewController
 

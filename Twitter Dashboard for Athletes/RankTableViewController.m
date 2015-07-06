@@ -10,6 +10,24 @@
 
 @implementation RankTableViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //username
+    PFQuery *query = [PFQuery queryWithClassName:@"UserName"];
+    [query fromLocalDatastore];
+    self.username = NULL;
+    self.username = [query getFirstObject][@"name"];
+    
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -56,4 +74,59 @@
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    PFObject *user = [self.objects objectAtIndex:indexPath.row];
+    NSString *text = [NSString stringWithFormat:@"@%@", user[@"name"]];
+    
+    TWTRComposer *composer = [[TWTRComposer alloc] init];
+    
+    [composer setText:text];
+    
+    // Called from a UIViewController
+    [composer showFromViewController:self completion:^(TWTRComposerResult result) {
+        if (result == TWTRComposerResultCancelled) {
+            NSLog(@"Tweet composition cancelled");
+        }
+        else
+        {
+            NSLog(@"Sending Tweet!");
+            
+            //this is where we add another tweet sent
+            PFQuery *query = [PFQuery queryWithClassName:@"User"];
+            [query whereKey:@"name" equalTo:self.username];
+            
+            //query
+            PFObject *tweetCount = [query getFirstObject];
+            
+            //if there is an object for that player
+            if(tweetCount != nil)
+            {
+                //get previous count and add one
+                int newCount = [[tweetCount objectForKey:@"tweetCount"] intValue] + 1;
+                NSLog(@"User tweets: %d", newCount);
+                [tweetCount setObject:[NSNumber numberWithInt:newCount] forKey:@"tweetCount"];
+                
+                //save
+                [tweetCount saveInBackground];
+            }
+            else
+            {
+                //create first count
+                PFObject *tweetCount = [PFObject objectWithClassName:@"User"];
+                [tweetCount setObject:[NSNumber numberWithInt:1] forKey:@"tweetCount"];
+                tweetCount[@"name"] = self.username;
+                tweetCount[@"rankMe"] = @"true";
+                [tweetCount saveInBackground];
+                NSLog(@"Created new user count object");
+            }
+            
+        }
+    }];
+    
+}
+
+
 @end
