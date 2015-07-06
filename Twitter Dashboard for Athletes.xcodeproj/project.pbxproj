@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EDC4A0231B4A246B006330DF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC4A01D1B4A246B006330DF /* Bolts.framework */; };
+		EDC4A0241B4A246B006330DF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC4A01E1B4A246B006330DF /* Parse.framework */; };
+		EDC4A0251B4A246B006330DF /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC4A01F1B4A246B006330DF /* ParseCrashReporting.framework */; };
+		EDC4A0261B4A246B006330DF /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC4A0201B4A246B006330DF /* ParseFacebookUtils.framework */; };
+		EDC4A0271B4A246B006330DF /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC4A0211B4A246B006330DF /* ParseFacebookUtilsV4.framework */; };
+		EDC4A0281B4A246B006330DF /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC4A0221B4A246B006330DF /* ParseUI.framework */; };
 		EDF072421B448C8E00ABD72C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF072411B448C8E00ABD72C /* main.m */; };
 		EDF072451B448C8E00ABD72C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF072441B448C8E00ABD72C /* AppDelegate.m */; };
 		EDF0724B1B448C8E00ABD72C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF072491B448C8E00ABD72C /* Main.storyboard */; };
@@ -54,6 +60,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EDC4A01D1B4A246B006330DF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = parse/Bolts.framework; sourceTree = "<group>"; };
+		EDC4A01E1B4A246B006330DF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = parse/Parse.framework; sourceTree = "<group>"; };
+		EDC4A01F1B4A246B006330DF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = parse/ParseCrashReporting.framework; sourceTree = "<group>"; };
+		EDC4A0201B4A246B006330DF /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = parse/ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		EDC4A0211B4A246B006330DF /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = parse/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		EDC4A0221B4A246B006330DF /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = parse/ParseUI.framework; sourceTree = "<group>"; };
 		EDF0723C1B448C8E00ABD72C /* Twitter Dashboard for Athletes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twitter Dashboard for Athletes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF072401B448C8E00ABD72C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDF072411B448C8E00ABD72C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -113,20 +125,26 @@
 				EDF0728B1B44903800ABD72C /* Security.framework in Frameworks */,
 				EDF0729C1B4490F200ABD72C /* TwitterCore.framework in Frameworks */,
 				EDF0729A1B4490F200ABD72C /* TwitterKit.framework in Frameworks */,
+				EDC4A0241B4A246B006330DF /* Parse.framework in Frameworks */,
+				EDC4A0231B4A246B006330DF /* Bolts.framework in Frameworks */,
 				EDF072991B4490F200ABD72C /* Fabric.framework in Frameworks */,
 				EDF072891B44903100ABD72C /* QuartzCore.framework in Frameworks */,
 				EDF072871B44902800ABD72C /* MobileCoreServices.framework in Frameworks */,
 				EDF072851B44902000ABD72C /* CoreLocation.framework in Frameworks */,
+				EDC4A0281B4A246B006330DF /* ParseUI.framework in Frameworks */,
 				EDF072831B44901800ABD72C /* CoreGraphics.framework in Frameworks */,
 				EDF072811B44901100ABD72C /* CFNetwork.framework in Frameworks */,
+				EDC4A0261B4A246B006330DF /* ParseFacebookUtils.framework in Frameworks */,
 				EDF072AA1B462DE700ABD72C /* Crashlytics.framework in Frameworks */,
 				EDF0727F1B44900800ABD72C /* AudioToolbox.framework in Frameworks */,
+				EDC4A0251B4A246B006330DF /* ParseCrashReporting.framework in Frameworks */,
 				EDF072781B448E8700ABD72C /* Bolts.framework in Frameworks */,
 				EDF072791B448E8700ABD72C /* Parse.framework in Frameworks */,
 				EDF0727A1B448E8700ABD72C /* ParseCrashReporting.framework in Frameworks */,
 				EDF0727B1B448E8700ABD72C /* ParseFacebookUtils.framework in Frameworks */,
 				EDF0727C1B448E8700ABD72C /* ParseFacebookUtilsV4.framework in Frameworks */,
 				EDF0727D1B448E8700ABD72C /* ParseUI.framework in Frameworks */,
+				EDC4A0271B4A246B006330DF /* ParseFacebookUtilsV4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +180,12 @@
 		EDF0723E1B448C8E00ABD72C /* Twitter Dashboard for Athletes */ = {
 			isa = PBXGroup;
 			children = (
+				EDC4A01D1B4A246B006330DF /* Bolts.framework */,
+				EDC4A01E1B4A246B006330DF /* Parse.framework */,
+				EDC4A01F1B4A246B006330DF /* ParseCrashReporting.framework */,
+				EDC4A0201B4A246B006330DF /* ParseFacebookUtils.framework */,
+				EDC4A0211B4A246B006330DF /* ParseFacebookUtilsV4.framework */,
+				EDC4A0221B4A246B006330DF /* ParseUI.framework */,
 				EDF072BD1B49FB8A00ABD72C /* RankTableViewController.h */,
 				EDF072BE1B49FB8A00ABD72C /* RankTableViewController.m */,
 				EDF072B71B49BACF00ABD72C /* EventsTableViewController.h */,
@@ -509,6 +533,10 @@
 					for,
 					Athletes/parse,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Twitter",
+					Dashboard,
+					for,
+					Athletes/parse,
 				);
 				INFOPLIST_FILE = "Twitter Dashboard for Athletes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -531,6 +559,10 @@
 					for,
 					Athletes/parse,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Twitter",
+					Dashboard,
+					for,
+					Athletes/parse,
 				);
 				INFOPLIST_FILE = "Twitter Dashboard for Athletes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -593,6 +625,7 @@
 				EDF072611B448C8E00ABD72C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EDF072621B448C8E00ABD72C /* Build configuration list for PBXNativeTarget "Twitter Dashboard for AthletesTests" */ = {
 			isa = XCConfigurationList;
@@ -601,6 +634,7 @@
 				EDF072641B448C8E00ABD72C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

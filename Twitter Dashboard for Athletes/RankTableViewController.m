@@ -21,7 +21,7 @@
 }
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:@"UserTweetCount"];
+    PFQuery *query = [PFQuery queryWithClassName:@"User"];
     
     // If no objects are loaded in memory, we look to the cache
     // first to fill the table and then subsequently do a query
@@ -32,7 +32,7 @@
     }
      */
     
-    [query orderByAscending:@"count"];
+    [query orderByAscending:@"tweetCount"];
     
     return query;
 }
@@ -49,7 +49,8 @@
     }
     
     // Configure the cell to show todo item with a priority at the bottom
-    NSString *label = [NSString stringWithFormat:@"@%@", [object objectForKey:@"name"]];
+    int number = indexPath.row + 1;
+    NSString *label = [NSString stringWithFormat:@"%d. @%@", number, [object objectForKey:@"name"]];
     cell.textLabel.text = label;
     
     return cell;

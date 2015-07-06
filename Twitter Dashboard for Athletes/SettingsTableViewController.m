@@ -20,6 +20,8 @@
 //events
 @property (strong, nonatomic) IBOutlet UISwitch *eventTweetRemindersSwitch;
 
+//user
+@property (strong, nonatomic) NSString *username;
 
 @end
 
@@ -59,6 +61,44 @@
     //Calendar search terms
     
     //notification frequency
+    
+    //get user name
+    PFQuery *query = [PFQuery queryWithClassName:@"UserName"];
+    [query fromLocalDatastore];
+    self.username = NULL;
+    self.username = [query getFirstObject][@"name"];
+    
+    //get the actual user object from the online database
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"User"];
+    [query whereKey:@"name" equalTo:self.username];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!object)
+        {
+            NSLog(@"The getFirstObject request failed.");
+        } else
+        {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved the object.");
+            
+            //object[@"sentimentAnalysis"] = sentimentAnalysis;
+            //object[@"positiveTweets"] = positiveTweets;
+            //object[@"negativeTweets"] = negativeTweets;
+            if(rankMe)
+            {
+                object[@"rankMe"] = @"true";
+            }
+            else
+            {
+                object[@"rankMe"] = @"false";
+            }
+            //object[@"eventTweetReminders"] = eventTweetReminders;
+            
+            [object saveInBackground];
+        }
+    }];
+    
+    
 }
 
 //DATA

@@ -85,7 +85,7 @@
             NSLog(@"Sending Tweet!");
             
             //this is where we add another tweet sent
-            PFQuery *query = [PFQuery queryWithClassName:@"UserTweetCount"];
+            PFQuery *query = [PFQuery queryWithClassName:@"User"];
             [query whereKey:@"name" equalTo:self.username];
             
             //query
@@ -95,9 +95,9 @@
             if(tweetCount != nil)
             {
                 //get previous count and add one
-                int newCount = [[tweetCount objectForKey:@"count"] intValue] + 1;
+                int newCount = [[tweetCount objectForKey:@"tweetCount"] intValue] + 1;
                 NSLog(@"User tweets: %d", newCount);
-                [tweetCount setObject:[NSNumber numberWithInt:newCount] forKey:@"count"];
+                [tweetCount setObject:[NSNumber numberWithInt:newCount] forKey:@"tweetCount"];
                 
                 //save
                 [tweetCount saveInBackground];
@@ -105,9 +105,10 @@
             else
             {
                 //create first count
-                PFObject *tweetCount = [PFObject objectWithClassName:@"UserTweetCount"];
-                [tweetCount setObject:[NSNumber numberWithInt:1] forKey:@"count"];
+                PFObject *tweetCount = [PFObject objectWithClassName:@"User"];
+                [tweetCount setObject:[NSNumber numberWithInt:1] forKey:@"tweetCount"];
                 tweetCount[@"name"] = self.username;
+                tweetCount[@"rankMe"] = @"true";
                 [tweetCount saveInBackground];
                 NSLog(@"Created new user count object");
             }
