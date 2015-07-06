@@ -34,27 +34,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    
-    //update the events and then set the number of rows to events.count
-    NSLog(@"%d", self.events.count);
-    return self.events.count;
-}
-
 - (IBAction)update:(UIBarButtonItem *)sender
 {
     //update events
     NSLog(@"Update events");
+    [self getEvents];
 }
 
 //update events
@@ -83,9 +67,9 @@
             NSCalendar *calendar = [NSCalendar currentCalendar];
             
             // Create the start date components
-            NSDateComponents *oneDayAgoComponents = [[NSDateComponents alloc] init];
-            oneDayAgoComponents.day = 0;
-            NSDate *oneDayAgo = [calendar dateByAddingComponents:oneDayAgoComponents
+            NSDateComponents *todayComponents = [[NSDateComponents alloc] init];
+            todayComponents.day = 0;
+            NSDate *today = [calendar dateByAddingComponents:todayComponents
                                                           toDate:[NSDate date]
                                                          options:0];
             
@@ -97,7 +81,7 @@
                                                               options:0];
             
             // Create the predicate from the event store's instance method
-            NSPredicate *predicate = [store predicateForEventsWithStartDate:oneDayAgo
+            NSPredicate *predicate = [store predicateForEventsWithStartDate:today
                                                                     endDate:oneYearFromNow
                                                                   calendars:nil];
             
@@ -105,34 +89,103 @@
             NSArray *events = [store eventsMatchingPredicate:predicate];
             
             //loop over events
-            NSMutableArray *calendarItems = [[NSMutableArray alloc] init];
-            for(EKCalendarItem *eventItem in events)
+            for(EKEvent *eventItem in events)
             {
                 NSString *title = eventItem.title;
                 NSString *description = eventItem.description;
                 NSString *combined = [NSString stringWithFormat:@"%@ %@", title, description];
                 
                 //if the event contains sports words add the event to the array
-                [calendarItems addObject:eventItem];
-                /*
-                if([combined containsString:@"game"] || [combined containsString:@"tournament"] || [combined containsString:@"match"] || [combined containsString:@"sport"])
+                if([combined containsString:@"game"] || [combined containsString:@"tournament"] || [combined containsString:@"match"] || [combined containsString:@"sport"] || [combined containsString:@"championship"])
                 {
-                    [calendarItems addObject:eventItem];
+                    //check if the object title is taken
+                    PFQuery *query = [PFQuery queryWithClassName:@"LocalEvent"];
+                    [query fromLocalDatastore];
+                    [query whereKey:@"title" equalTo:title];
+                    
+                    PFObject *firstObject = [query getFirstObject];
+                    
+                    if(firstObject == nil)
+                    {
+                        NSLog(@"No events with that title");
+                        //save an event with that title
+                        PFObject *event = [PFObject objectWithClassName:@"LocalEvent"];
+                        event[@"title"] = title;
+                        event[@"description"] = description;
+                        event[@"date"] = eventItem.endDate;
+                        [event pinInBackground];
+                        
+                        //schedule a notification for this event
+                        NSTimeInterval secondsInOneHour = 60 * 60;
+                        NSDate *notificationDate = [eventItem.endDate dateByAddingTimeInterval:secondsInOneHour];
+                        
+                        UILocalNotification* notification = [[UILocalNotification alloc] init];
+                        notification.fireDate = notificationDate;
+                        notification.alertTitle = title;
+                        NSString *body = [NSString stringWithFormat:@"tweet about %@?", title];
+                        notification.alertBody = body;
+                        event[@"notificationDate"] = notificationDate;
+                        [event pinInBackground];
+                        
+                        //schedule
+                        [[UIApplication sharedApplication] scheduleLocalNotification: notification];
+                        NSLog(@"Scheduled notification");
+                    }
                 }
-                 */
             }
             
-            self.events = calendarItems;
         }
     }];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"prototype" forIndexPath:indexPath];
+//Parse table stuff
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self)
+    {
+        
+    }
+    return self;
+}
+
+- (PFQuery *)queryForTable
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"LocalEvent"];
+    [query fromLocalDatastore];
     
-    EKCalendarItem *item = [self.events objectAtIndex:indexPath.row];
-    NSString *title = item.title;
-    cell.textLabel.text = title;
+    // If no objects are loaded in memory, we look to the cache
+    // first to fill the table and then subsequently do a query
+    // against the network.
+    /*
+     if ([self.objects count] == 0) {
+     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+     }
+     */
+    
+    return query;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+                        object:(PFObject *)object {
+    static NSString *CellIdentifier = @"rankCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.textLabel.text = object[@"title"];
+    
+    //date
+    NSDate *date = object[@"notificationDate"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"MM-dd HH:mm"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    cell.detailTextLabel.text = stringFromDate;
+    
     
     return cell;
 }

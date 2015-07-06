@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
+#import <Parse/Parse.h>
+#import <Bolts/Bolts.h>
+#import <ParseUI/ParseUI.h>
 
-@interface EventsTableViewController : UITableViewController
+@interface EventsTableViewController : PFQueryTableViewController
 
 @end
