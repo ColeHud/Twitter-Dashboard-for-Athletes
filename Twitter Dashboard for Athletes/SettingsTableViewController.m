@@ -48,6 +48,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+//buttons
+- (IBAction)sentimentAnalysis:(id)sender
+{
+    [self updateSettings];
+}
+
+- (IBAction)positiveTweets:(id)sender
+{
+    [self updateSettings];
+}
+
+- (IBAction)negativeTweets:(id)sender
+{
+    [self updateSettings];
+}
+
+- (IBAction)rankMe:(id)sender
+{
+    [self updateSettings];
+}
+
+- (IBAction)eventTweetReminders:(id)sender
+{
+    [self updateSettings];
+}
+
 //update back-end settings
 -(void)updateSettings
 {
@@ -55,7 +81,7 @@
     BOOL sentimentAnalysis = self.sentimentAnalysisSwitch.isEnabled;
     BOOL positiveTweets = self.positiveTweetsSwitch.isEnabled;
     BOOL negativeTweets = self.negativeTweetsSwitch.isEnabled;
-    BOOL rankMe = self.rankMeSwitch.isEnabled;
+    BOOL rankMe = self.rankMeSwitch.isOn;
     BOOL eventTweetReminders = self.eventTweetRemindersSwitch.isEnabled;
     
     //Calendar search terms
@@ -70,9 +96,9 @@
     
     //get the actual user object from the online database
     PFQuery *userQuery = [PFQuery queryWithClassName:@"User"];
-    [query whereKey:@"name" equalTo:self.username];
+    [userQuery whereKey:@"name" equalTo:self.username];
     
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!object)
         {
             NSLog(@"The getFirstObject request failed.");
@@ -84,13 +110,15 @@
             //object[@"sentimentAnalysis"] = sentimentAnalysis;
             //object[@"positiveTweets"] = positiveTweets;
             //object[@"negativeTweets"] = negativeTweets;
-            if(rankMe)
+            if(rankMe == TRUE)
             {
                 object[@"rankMe"] = @"true";
+                NSLog(@"true");
             }
             else
             {
                 object[@"rankMe"] = @"false";
+                NSLog(@"false");
             }
             //object[@"eventTweetReminders"] = eventTweetReminders;
             

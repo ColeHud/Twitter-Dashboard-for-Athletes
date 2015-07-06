@@ -22,6 +22,7 @@
 
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    [query whereKey:@"rankMe" equalTo:@"true"];
     
     // If no objects are loaded in memory, we look to the cache
     // first to fill the table and then subsequently do a query
