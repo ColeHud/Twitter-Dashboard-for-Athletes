@@ -128,8 +128,21 @@
                         [event pinInBackground];
                         
                         //schedule
-                        [[UIApplication sharedApplication] scheduleLocalNotification: notification];
-                        NSLog(@"Scheduled notification");
+                        //first, get the settings
+                        PFQuery *settingsQuery = [PFQuery queryWithClassName:@"Settings"];
+                        [settingsQuery fromLocalDatastore];
+                        PFObject *settings = [settingsQuery getFirstObject];
+                        NSString *eventTweetReminders = settings[@"eventTweetReminders"];
+                        
+                        if([eventTweetReminders isEqualToString:@"true"])
+                        {
+                            [[UIApplication sharedApplication] scheduleLocalNotification: notification];
+                            NSLog(@"Scheduled notification");
+                        }
+                        else
+                        {
+                            NSLog(@"Tried to schedule, but notifications were disabled");
+                        }
                     }
                 }
             }

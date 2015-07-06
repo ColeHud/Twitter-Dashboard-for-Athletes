@@ -35,8 +35,40 @@
     self.username = NULL;
     self.username = [query getFirstObject][@"name"];
     
-    //construct the search query string
+    //settings query
+    PFQuery *settingsQuery = [PFQuery queryWithClassName:@"Settings"];
+    [settingsQuery fromLocalDatastore];
+    PFObject *settings = [settingsQuery getFirstObject];
+    NSString *sentimentAnalysis = settings[@"sentimentAnalysis"];
+    NSString *positiveTweets = settings[@"positiveTweets"];
+    NSString *negativeTweets = settings[@"negativeTweets"];
+    
     NSString *searchTerm = [NSString stringWithFormat:@"to:%@", self.username];
+    if([sentimentAnalysis isEqualToString:@"false"])
+    {
+        searchTerm = [NSString stringWithFormat:@"to:%@", self.username];
+    }
+    else
+    {
+        if([positiveTweets isEqualToString:@"true"] && [negativeTweets isEqualToString:@"false"])
+        {
+            searchTerm = [NSString stringWithFormat:@"to:%@ :)", self.username];
+        }
+        
+        if([positiveTweets isEqualToString:@"false"] && [negativeTweets isEqualToString:@"true"])
+        {
+            searchTerm = [NSString stringWithFormat:@"to:%@ :(", self.username];
+        }
+        
+        if([positiveTweets isEqualToString:@"true"] && [negativeTweets isEqualToString:@"true"])
+        {
+            searchTerm = [NSString stringWithFormat:@"to:%@", self.username];
+        }
+    }
+    
+    
+    //construct the search query string
+    
     NSLog(@"search term: %@", searchTerm);
     
     //load twitter timeline
