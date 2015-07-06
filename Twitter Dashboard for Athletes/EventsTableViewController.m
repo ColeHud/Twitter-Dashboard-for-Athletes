@@ -10,7 +10,7 @@
 
 @interface EventsTableViewController ()
 
--(void)updateEvents;
+-(void)getEvents;
 @property (strong, nonatomic) NSMutableArray *events;
 
 @end
@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad
 {
-    [self updateEvents];
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -39,18 +38,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     
     //update the events and then set the number of rows to events.count
-    [self updateEvents];
     NSLog(@"%d", self.events.count);
     return self.events.count;
 }
@@ -59,11 +55,10 @@
 {
     //update events
     NSLog(@"Update events");
-    [self updateEvents];
 }
 
 //update events
--(void)updateEvents
+-(void)getEvents
 {
     //calendar stuff
     EKEventStore *store = [[EKEventStore alloc] init];
@@ -128,13 +123,9 @@
             }
             
             self.events = calendarItems;
-            [self.tableView reloadData];
         }
     }];
-    
-    
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"prototype" forIndexPath:indexPath];
