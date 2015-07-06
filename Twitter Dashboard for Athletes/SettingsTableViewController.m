@@ -88,6 +88,45 @@
     
     //notification frequency
     
+    //save local settings
+    PFQuery *settingsQuery = [PFQuery queryWithClassName:@"Settings"];
+    [settingsQuery fromLocalDatastore];
+    PFObject *settings = [settingsQuery getFirstObject];
+    if(sentimentAnalysis)
+    {
+        settings[@"sentimentAnalysis"] = @"true";
+    }
+    else
+    {
+        settings[@"sentimentAnalysis"] = @"false";
+    }
+    if(positiveTweets)
+    {
+        settings[@"positiveTweets"] = @"true";
+    }
+    else
+    {
+        settings[@"positiveTweets"] = @"false";
+    }
+    if(negativeTweets)
+    {
+        settings[@"negativeTweets"] = @"true";
+    }
+    else
+    {
+        settings[@"negativeTweets"] = @"false";
+    }
+    if(eventTweetReminders)
+    {
+        settings[@"eventTweetReminders"] = @"true";
+    }
+    else
+    {
+        settings[@"eventTweetReminders"] = @"false";
+    }
+    [settings pinInBackground];
+    
+    
     //get user name
     PFQuery *query = [PFQuery queryWithClassName:@"UserName"];
     [query fromLocalDatastore];

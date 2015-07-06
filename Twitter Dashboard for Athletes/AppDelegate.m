@@ -35,6 +35,21 @@
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
     
+    //create settings
+    PFQuery *settingsQuery = [PFQuery queryWithClassName:@"Settings"];
+    [settingsQuery fromLocalDatastore];
+    PFObject *settings = [settingsQuery getFirstObject];
+    if(settings == nil)
+    {
+        //create standard settings
+        PFObject *newSettings = [PFObject objectWithClassName:@"Settings"];
+        newSettings[@"sentimentAnalysis"] = @"false";
+        newSettings[@"positiveTweets"] = @"true";
+        newSettings[@"negativeTweets"] = @"true";
+        newSettings[@"eventReminders"] = @"true";
+        [newSettings pinInBackground];
+    }
+    
     // Override point for customization after application launch.
     return YES;
 }
